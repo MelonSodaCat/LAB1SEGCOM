@@ -77,7 +77,7 @@ Para descubrir el tamaño del bloque se pueden enviar mensajes de largos crececi
 
 ## Descifrando el último bit 
 
-Para esto nos colocaremos entre la comunicación del servidor A y el servidor B para utilizar el ciphertext que nos entrega A para manipular y obtener lo siguiente.
+Para esto nos colocaremos entre la comunicación del servidor A y el servidor B para utilizar el ciphertext que nos entrega A para manipular el texto cifrado. Esto lo vemos en el archivo `last_byte.py`, especificamente en el siguiente extracto.
 
 ```python
 ct_bytes=utils.hex_to_bytes(ct)
@@ -116,11 +116,9 @@ for candidate in range(256):
 Con esto obtenemos que el último byte es `3` esto dado que nuestro mensaje es `aaaaaa` y obteniene un padding de tres debido a la presencia de la llave.
 
 
-
-
 ## Descifrando un bloque completo
 
-El proceso anterior luego se extiende para un bloque completo de la siguiente forma:
+El proceso anterior luego se extiende para un bloque completo en el archivo `last_block.py`, del cual vemos la sección principal en el siguiente extracto.
 
 ```python
 def decrypt_last_block(previous_block, last_block):
@@ -179,7 +177,9 @@ pt_last_block_bytes = [99, 52, 97, 49, 54, 51, 57, 48, 48, 50, 48, 34, 125, 3, 3
 
 ## Obtención de key
 
-Para obtener la llave es necesario desencriptar el texto completo, por lo cual realizaremos el siguiente bucle.
+Para obtener la llave es necesario desencriptar el texto completo, lo cual realizamos en los archivos `decryption.py`y `decryption-opt.py`.
+
+A continuación un extracto de la sección más relevante para obtener la llave en `decryption.py`
 
 ```python
 # Convert the ciphertext to bytes
