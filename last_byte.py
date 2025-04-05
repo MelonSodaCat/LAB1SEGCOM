@@ -6,14 +6,15 @@ import utils
 A_ADDR = ("cc5327.hackerlab.cl", 5312)
 B_ADDR = ("cc5327.hackerlab.cl", 5313)
 BLOCKSIZE=16
+MESSAGE= "a"*6
 
 if __name__ == "__main__":
     a_input, a_output = utils.create_socket(A_ADDR)
     b_input, b_output = utils.create_socket(B_ADDR)
     while True:
-        
             # Read a message from standard input
-            msg = input("send a message: ")
+            print("SENDING MESSAGE: ", MESSAGE)
+            msg = MESSAGE
             # You need to use encode() method to send a string as bytes.
             print(f"  [Client] \"{msg}\"")
             resp_a = utils.send_message(a_input, a_output, msg)
@@ -54,7 +55,10 @@ if __name__ == "__main__":
                     #pt =dec(ci) xor c_i-1
                     pt_byte= decrypted_byte ^ ct_blocks[-2][-1]
                     #Obtenemos el último byte
-                    print("Last byte: ", pt_byte)
+                    print("Plaintext Last byte: ", pt_byte)
+
+                
+                   
                   
                   
           
