@@ -169,7 +169,12 @@ Recordando que para iterar sobre el siguiente byte, los anteriores deben tener e
 Aquí retornamos los bytes del último bloque. 
 
 ```
-pt_last_block_bytes = [99, 52, 97, 49, 54, 51, 57, 48, 48, 50, 48, 34, 125, 3, 3, 3]
+
+Last Block:  [99, 52, 97, 49, 54, 51, 57, 48, 48, 50, 48, 34, 125, 3, 3, 3]
+Plaintext Last Block joined: bytearray(b'c4a16390020"}\x03\x03\x03')
+Plaintext Las Block decoded: c4a16390020"}
+
+
 
 ```
 
