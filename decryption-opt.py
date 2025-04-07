@@ -109,7 +109,7 @@ if __name__ == "__main__":
             print("Retrying...")
             continue
         else:
-            pt = utils.join_blocks(solution[1:])
+            pt = utils.join_blocks(map(bytearray, solution[1:]))
             print(f"Plaintext: {pt}")
             a = bytearray(pt)
             print(f"Plaintext joined: {a}")
