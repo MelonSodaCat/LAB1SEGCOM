@@ -1,5 +1,4 @@
 # Laboratorio 1: Padding Oracle Attack
-## CC5327 Introducción a la Seguridad Computacional
 ## Nombres : Antonia G. Calvo y Raimundo Lorca Correa 
 ## Exploración de inputs 
 
@@ -35,16 +34,18 @@ respuestaWholeBlockPad="366aecb33f2999ea5ab542f8b22c944d4448c5a4c28c5aebd20afcec
 
 ```
 
-Como se observa anteriormente el mensaje de largo 9 genera un nuevo bloque de padding. Por lo que cual la llave debe tener un largo de la siguiente forma.
+Como se observa anteriormente el mensaje de largo 9 genera un nuevo bloque de padding. Por lo que al largo del texto cifrado se le puede sustraer el largo del mensaje y el bloque para obtener el largo de la llave.
 
-$ LargoLlave = 16*n -9$
+$LargoTextoCifrado = LargoLlave + LargoMensaje + LargoBloque$
 
-O sea, un múltiplo del tamaño del bloque menos los 9 bytes que necesita para completar el bloque. 
+$LargoLlave = LargoTextoCifrado - (LargoMensaje + LargoBloque)$
+
+$LargoLlave = 128 - (9 + 16) = 103$
+
+Esto debido a que dos caracteres hexadecimales corresponden a un byte, por lo cual su largo es divido en 2 para realizar la formula. El largo de la llave corresponde a 103 bytes. 
 
 
-
-
-## Codigo de reenvio de respuesta a A en B 
+## Código de reenvio de respuesta a A en B 
 Usando el archivo `forwarder.py` se observa que el servidor B desencripta correctamente y no entrega la llave.
 
 
