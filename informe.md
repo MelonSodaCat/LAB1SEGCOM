@@ -4,7 +4,7 @@
 
 Tal cual indica el enunciado la encriptación concatena el mensaje y la llave para generar el input que se le entrega al servidor, por lo cual aun cuando se mande un solo byte el texto cifrado.
 
-$ 𝑐 = 𝐸𝑛𝑐𝑟𝑦𝑝𝑡(𝑚 + 𝑘𝑒𝑦) $
+$ C = Enc(m + k)$
 
 Como ejemplo mostraremos los inputs probados.
 
@@ -22,7 +22,23 @@ respuesta3="a423bb3155bbaf28ca12d8ea6509cf1448e7ba655372a60d541f505677020c4b8206
 
 ```
 
-Notamos que hay un caso especial que nos permite determinar el largo de la llave. Por enunciado se sabe que el largo de bloque es 16 bytes, por lo cual tenemos que identificar un mensaje de largo tal que se paddee un bloque completo. ahi tendriamos lo siguiente.
+Notamos que hay un caso especial que nos permite determinar el largo de la llave. Por enunciado se sabe que el largo de bloque es 16 bytes, por lo cual tenemos que identificar un mensaje de largo tal que la función de padding agregue un bloque completo. 
+```
+inputBeforeWholeBlockPad="00000000"
+
+respuestaBeforeWholeBlockPad="2587c967b688343c4d1ac36732a4d6b05518aafa54d7520c2b92cf02008985538c2728ede50a47a061da9d13dcb19a71b2e7c4e23be4e13b3d49a1705d8196e331da34f47491071a5cfa806f2421a921ab03910dc5c1820e090fb3bae0f6c3f6896690aa22de4ef8e1e497d11451aa59"
+
+inputWholeBlockPad="000000000"
+
+respuestaWholeBlockPad="366aecb33f2999ea5ab542f8b22c944d4448c5a4c28c5aebd20afcecdec9e3a7cc829b54a870798d5de9bf5e4a105f9fa829e15e64dd905593ed8e7fbc3e2200979fc103abcf42b6272772ddb32bcad815b8518b4ae13b45c1b4a098ecfac25c29fba30f7acb2c5b791c43704f6244a4d2788565bafd4f4ab3b676f3cc4afc3d"
+
+```
+
+Como se observa anteriormente el mensaje de largo 9 genera un nuevo bloque de padding. Por lo que cual la llave debe tener un largo de la siguiente forma.
+
+$ LargoLlave = 16*n -9$
+
+O sea, un múltiplo del tamaño del bloque menos los 9 bytes que necesita para completar el bloque. 
 
 
 
