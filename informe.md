@@ -4,7 +4,7 @@
 
 Tal cual indica el enunciado la encriptación concatena el mensaje y la llave para generar el input que se le entrega al servidor, por lo cual aun cuando se mande un solo byte el texto cifrado.
 
-$ C = Enc(m + k)$
+$C = Enc(m + k)$
 
 Como ejemplo mostraremos los inputs probados.
 
