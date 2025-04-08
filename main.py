@@ -15,7 +15,6 @@ if __name__ == "__main__":
             print("[Client] \"{}\"".format(response))
             resp = utils.send_message(sock_input, sock_output, response)
             print("[Server] \"{}\"".format(resp))
-            print("BYTES:", utils.bytes_to_hex(resp))
             # Wait for a response and disconnect.
         except Exception as e:
             print(e)
